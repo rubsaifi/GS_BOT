@@ -157,11 +157,11 @@ ROLE_FILES = {
     },
     "BSOM": {
         "goal_sheet": "utils/BSOM_Goal_Sheet.xlsx",
-        "parameter": "utils/BSOM_Parameter.xlsx"
+        "parameter": "utils/BSOM_PARAMETER.xlsx"
     },
     "ABSOM_TSE": {
         "goal_sheet": "utils/ABSOM_TSE_GS.xlsx",
-        "parameter": "utils/ABSOM_TSE_PARAMETER.xlsx"
+        "parameter": "utils/ABSOM_TSE_Parameter.xlsx"
     }
 }
 
