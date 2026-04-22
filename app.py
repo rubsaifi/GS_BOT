@@ -298,22 +298,16 @@ else:
     # ── Load data once per role ───────────────────────────
     if not st.session_state.data_loaded:
         with st.spinner(f"⏳ Loading {role} Goal Sheet data..."):
+            load_data.clear()
+            create_vector_db.clear()
             kpi_df, scoring_df = load_data(role)
-            df = pd.concat([kpi_df, scoring_df], axis=0, ignore_index=True)
-            index, embeddings = create_vector_db(df)
-
-            st.session_state.kpi_df = kpi_df
-            st.session_state.scoring_df = scoring_df
-            st.session_state.df = df
-            st.session_state.index = index
+            index, combined_df = create_vector_db(role)
             st.session_state.data_loaded = True
         st.rerun()
 
     # ── Restore from session ──────────────────────────────
-    kpi_df = st.session_state.kpi_df
-    scoring_df = st.session_state.scoring_df
-    df = st.session_state.df
-    index = st.session_state.index
+    kpi_df, scoring_df = load_data(role)
+    index, df = create_vector_db(role)
 
     # ── Sidebar ───────────────────────────────────────────
     with st.sidebar:
