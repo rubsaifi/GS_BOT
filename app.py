@@ -105,7 +105,7 @@
 #         st.session_state.chat_history.append({"role": "user", "content": q})
 
 #         with st.spinner("🤖 Thinking..."):
-#             context_chunks = search(q, df, index)
+#             context_chunks = search(q, role)
 #             response = ask_goalbot_rag(
 #                 question=q,
 #                 context_chunks=context_chunks,
@@ -358,7 +358,7 @@ else:
         if cols[i].button(q):
             st.session_state.chat_history.append({"role": "user", "content": q})
             with st.spinner("🤖 Thinking..."):
-                context_chunks = search(q, df, index)
+                context_chunks = search(q, role)
                 response = ask_goalbot_rag(
                     question=q,
                     context_chunks=context_chunks,
@@ -384,7 +384,7 @@ else:
 
         with st.chat_message("assistant"):
             with st.spinner("🤖 Thinking..."):
-                context_chunks = search(user_input, df, index)
+                context_chunks = search(user_input, role)
                 response = ask_goalbot_rag(
                     question=user_input,
                     context_chunks=context_chunks,
